@@ -1,0 +1,28 @@
+Pesan ini menunjukkan bahwa proyek Anda tidak memiliki SDK Android yang diperlukan untuk membangun dan menjalankan aplikasi di Android Emulator. Berikut adalah langkah-langkah untuk mengatasi masalah ini:
+1.	Install Android SDK:
+•	Buka Visual Studio Installer.
+•	Pilih Modify pada instalasi Visual Studio Anda.
+•	Pastikan Mobile development with .NET workload dipilih.
+•	Di bawah Mobile development with .NET, pastikan Android SDK setup (API level 33) dipilih.
+•	Klik Modify untuk menginstal komponen yang diperlukan.
+
+2.	Konfigurasi Android SDK di Visual Studio:
+•	Buka Visual Studio.
+•	Pergi ke Tools > Options.
+•	Navigasi ke Xamarin > Android Settings.
+•	Pastikan path ke Android SDK, NDK, dan JDK sudah benar.
+
+3.	Install Android Emulator:
+•	Buka Android Device Manager di Visual Studio (Tools > Android > Android Device Manager).
+•	Buat atau pilih emulator yang sesuai dan pastikan emulator tersebut terinstal dan dikonfigurasi dengan benar.
+
+4.	Enable Hyper-V (Jika menggunakan Windows):
+•	Pastikan Hyper-V diaktifkan jika Anda menggunakan Windows dan ingin menggunakan Android Emulator berbasis Hyper-V.
+•	Buka Control Panel > Programs > Turn Windows features on or off.
+•	Centang Hyper-V dan restart komputer Anda jika diperlukan.
+
+5.	Update SDK dan Tools:
+•	Buka Android SDK Manager (Tools > Android > Android SDK Manager).
+•	Pastikan semua SDK dan tools yang diperlukan sudah terinstal dan up-to-date.
+
+Setelah mengikuti langkah-langkah di atas, coba jalankan kembali Android Emulator dan proyek Anda. Jika masih ada masalah, pastikan untuk memeriksa log error yang lebih spesifik untuk mendapatkan petunjuk lebih lanjut.
