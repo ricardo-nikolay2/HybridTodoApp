@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using HybridTodoApp.Data;
 
 namespace HybridTodoApp
 {
@@ -21,6 +22,7 @@ namespace HybridTodoApp
     		builder.Logging.AddDebug();
 #endif
 
+            builder.Services.AddSingleton<TodoService>();
             return builder.Build();
         }
     }
