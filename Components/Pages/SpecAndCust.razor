@@ -1,0 +1,64 @@
+﻿@page "/specandcust"
+@using HybridTodoApp.Data;
+@inject IJSRuntime JSRuntime
+
+
+
+<h3>Spec And Cust</h3>
+
+<input placeholder="Something Cust" @bind="newCust" @ref="custInput" /> <!--6. INPUT UNTUK MEMASUKKAN DATA CUST-->
+<input placeholder="Something PartNumber" @bind="newPN" /> <!--7. INPUT UNTUK MEMASUKKAN DATA PARTNUMBER-->
+
+
+
+<button @onclick="AddData">Add Spec</button> <!--8. BUTTON UNTUK MENAMBAHKAN DATA-->
+
+
+@* 9.tampilkan data yang sudah diinputkan *@
+<ul>   
+    @foreach (var spec in specs)
+
+    {
+        <li>
+            @spec.cust
+            @spec.partnumber 
+        </li>
+        
+    }
+
+</ul>
+
+
+
+
+@code {
+
+    List<SpecItem> specs = new List<SpecItem>(); //1. DAFTAR LIST
+    string? newPN; //2. VARIABLE UNTUK MEMANGGIL VAR DARI KELAS SPECITEM
+    string? newCust; //3. VARIABLE UNTUK MEMANGGIL VAR DARI KELAS SPECITEM
+    ElementReference custInput; //4. VARIABLE UNTUK MEMANGGIL ELEMENT
+
+
+    
+
+    async Task AddData() //5. METHOD UNTUK MENAMBAHKAN DATA
+    {
+        if (string.IsNullOrWhiteSpace(newPN) || string.IsNullOrEmpty(newCust))
+            return;
+
+        specs.Add(new SpecItem
+            {
+                cust = newCust,
+                partnumber = newPN
+            });
+
+        newCust = string.Empty;
+        newPN = string.Empty;
+
+        await JSRuntime.InvokeVoidAsync("focusElement", custInput);
+        
+        //do this
+    }
+
+
+}

@@ -1,0 +1,80 @@
+﻿@page "/todo2"
+@using HybridTodoApp.Data;
+@inject TodoService TodoService
+
+<h3>Todo2(@todos2.Count(Todo => !Todo.IsDone))</h3>
+
+<input placeholder="Something Todo" @bind="newTodo" />
+<button @onclick="AddTodo">Add Todo</button>
+<button @onclick="Save">Save</button>
+
+
+<ul>
+    @foreach (var todo in todos2)
+    {
+        @* <li>@todo.Title</li> *@
+
+        <li>
+            <input type="checkbox" @bind="todo.IsDone" />
+            @* <input @bind="todo.Title" /> *@ 
+            @todo.Title
+        
+        </li>
+    }
+
+</ul>
+
+
+
+
+@code {
+
+    List<TodoItem> todos2 = new List<TodoItem>();
+    string? newTodo;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        var items = TodoService.LoadItems();
+        todos2.AddRange(items);
+    }
+
+    void Save()
+    {
+        TodoService.SaveItems(todos2);
+    }
+
+
+    void AddTodo()
+    {
+        if(string.IsNullOrWhiteSpace(newTodo))   
+            return;
+
+        todos2.Add(new TodoItem
+            {
+                Title = newTodo
+
+            });
+
+        newTodo = string.Empty;
+        //do this
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

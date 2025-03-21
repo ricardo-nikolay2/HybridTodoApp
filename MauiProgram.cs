@@ -23,6 +23,10 @@ namespace HybridTodoApp
 #endif
 
             builder.Services.AddSingleton<TodoService>();
+            builder.Services.AddSingleton<IConnectivity>(c => Connectivity.Current);
+
+
+
             return builder.Build();
         }
     }
